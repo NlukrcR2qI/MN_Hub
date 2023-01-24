@@ -300,14 +300,16 @@ function MN_LIB:CreateUI()
 			element.func.MouseButton1Up:Connect(function()
 				on = not on
 
-				func(on)
-
-				if on then
-					game:GetService("TweenService"):Create(element.func.line, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(119, 126, 152)}):Play()
-					game:GetService("TweenService"):Create(element.func.out, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(112, 118, 143)}):Play()
-				else
-					game:GetService("TweenService"):Create(element.func.line, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(90, 95, 115)}):Play()
-					game:GetService("TweenService"):Create(element.func.out, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(90, 95, 115)}):Play()
+				if func(on) then
+					func(on)
+	
+					if on then
+						game:GetService("TweenService"):Create(element.func.line, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(119, 126, 152)}):Play()
+						game:GetService("TweenService"):Create(element.func.out, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(112, 118, 143)}):Play()
+					else
+						game:GetService("TweenService"):Create(element.func.line, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(90, 95, 115)}):Play()
+						game:GetService("TweenService"):Create(element.func.out, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(90, 95, 115)}):Play()
+					end
 				end
 			end)
 			element.Parent = element2
@@ -494,14 +496,16 @@ function MN_LIB:CreateUI()
 				element.func.MouseButton1Up:Connect(function()
 					on = not on
 	
-					func(on)
-	
-					if on then
-						game:GetService("TweenService"):Create(element.func.line, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(95, 106, 126)}):Play()
-						game:GetService("TweenService"):Create(element.func.out, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(95, 106, 126)}):Play()
-					else
-						game:GetService("TweenService"):Create(element.func.line, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(64, 70, 84)}):Play()
-						game:GetService("TweenService"):Create(element.func.out, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(64, 70, 84)}):Play()
+					if func(on) then
+						func(on)
+		
+						if on then
+							game:GetService("TweenService"):Create(element.func.line, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(95, 106, 126)}):Play()
+							game:GetService("TweenService"):Create(element.func.out, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(95, 106, 126)}):Play()
+						else
+							game:GetService("TweenService"):Create(element.func.line, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(64, 70, 84)}):Play()
+							game:GetService("TweenService"):Create(element.func.out, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(64, 70, 84)}):Play()
+						end
 					end
 				end)
 				element.Parent = dropdownelement.contain

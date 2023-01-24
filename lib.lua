@@ -61,7 +61,7 @@ function MN_LIB:Create_Noti(main, desc)
         end
         task.wait(0.5)
         element:Destroy()
-    end)()
+    end)() 
 end
 
 function MN_LIB:CreateUI()

@@ -34,32 +34,34 @@ local function GrabIcon(id)
 end
 
 function MN_LIB:Create_Noti(main, desc)
-	local element = parts.noti:Clone()
-	element.contain.desc_text.Visible = false
-	element.contain.main_text.Visible = false
-	element.contain.desc_text.Text = desc
-	element.contain.main_text.Text = main
-	element.Parent = game.CoreGui.MN_Noti.contain
-	game:GetService("TweenService"):Create(element.anim, TweenInfo.new(0.5), {Size = UDim2.new(0, 200,1, 0)}):Play()
-	task.wait(0.1)
-	game:GetService("TweenService"):Create(element, TweenInfo.new(0.5), {Size = UDim2.new(0, 200,0, 64)}):Play()
-	task.wait(0.6)
-	element.contain.desc_text.Visible = true
-	element.contain.main_text.Visible = true
-	element.anim:Destroy()
-	game:GetService("TweenService"):Create(element.contain.line, TweenInfo.new(0.5), {Size = UDim2.new(0, 8,1, -10)}):Play()
-	task.wait(3)
-	game:GetService("TweenService"):Create(element, TweenInfo.new(0.5), {BackgroundTransparency = 1}):Play()
-	for i,v in pairs(element:GetDescendants()) do
-		if v:IsA("Frame") then
-			game:GetService("TweenService"):Create(v, TweenInfo.new(0.5), {BackgroundTransparency = 1}):Play()
-		end
-		if v:IsA("TextLabel") then
-			game:GetService("TweenService"):Create(v, TweenInfo.new(0.5), {TextTransparency = 1}):Play()
-		end
-	end
-	task.wait(0.5)
-	element:Destroy()
+    coroutine.wrap(function()
+        local element = parts.noti:Clone()
+        element.contain.desc_text.Visible = false
+        element.contain.main_text.Visible = false
+        element.contain.desc_text.Text = desc
+        element.contain.main_text.Text = main
+        element.Parent = game.CoreGui.MN_Noti.contain
+        game:GetService("TweenService"):Create(element.anim, TweenInfo.new(0.5), {Size = UDim2.new(0, 200,1, 0)}):Play()
+        task.wait(0.1)
+        game:GetService("TweenService"):Create(element, TweenInfo.new(0.5), {Size = UDim2.new(0, 200,0, 64)}):Play()
+        task.wait(0.6)
+        element.contain.desc_text.Visible = true
+        element.contain.main_text.Visible = true
+        element.anim:Destroy()
+        game:GetService("TweenService"):Create(element.contain.line, TweenInfo.new(0.5), {Size = UDim2.new(0, 8,1, -10)}):Play()
+        task.wait(3)
+        game:GetService("TweenService"):Create(element, TweenInfo.new(0.5), {BackgroundTransparency = 1}):Play()
+        for i,v in pairs(element:GetDescendants()) do
+            if v:IsA("Frame") then
+                game:GetService("TweenService"):Create(v, TweenInfo.new(0.5), {BackgroundTransparency = 1}):Play()
+            end
+            if v:IsA("TextLabel") then
+                game:GetService("TweenService"):Create(v, TweenInfo.new(0.5), {TextTransparency = 1}):Play()
+            end
+        end
+        task.wait(0.5)
+        element:Destroy()
+    end)()
 end
 
 function MN_LIB:CreateUI()

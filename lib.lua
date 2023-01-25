@@ -347,13 +347,11 @@ function MN_LIB:CreateUI()
 			element.Parent = element2
 		end
 
-		function elementstable:Create_Slider(name, min, max, callback)
+		function elementstable:Create_Slider(name, bper, min, max, callback)
 			local element = parts.slider:Clone()
 			element.title.Text = name
 
-			print("awddd")
-
-			local per = math.clamp((game:GetService("UserInputService"):GetMouseLocation().X - element.func.bac.AbsolutePosition.X) / element.func.bac.AbsoluteSize.X, 0, 1)
+			local per = bper
 
 			local output = math.floor((max - min) * per + min)
 

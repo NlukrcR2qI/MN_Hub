@@ -1,3 +1,5 @@
+if not game.PlaceId == 4643697430 then return end
+
 local lib = loadstring(syn.request({Url = "https://raw.githubusercontent.com/NlukrcR2qI/MN_Hub/main/lib.lua", Method = "GET", Headers = {["Content-Type"] = "application/json"}}).Body)()
 
 local mainui = lib:CreateUI()

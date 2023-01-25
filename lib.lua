@@ -351,6 +351,18 @@ function MN_LIB:CreateUI()
 			local element = parts.slider:Clone()
 			element.title.Text = name
 
+			print("awddd")
+
+			local per = math.clamp((game:GetService("UserInputService"):GetMouseLocation().X - element.func.bac.AbsolutePosition.X) / element.func.bac.AbsoluteSize.X, 0, 1)
+
+			local output = math.floor((max - min) * per + min)
+
+			game:GetService("TweenService"):Create(element.func.bac.over, TweenInfo.new(0.15), {Size = UDim2.new(per, element.func.bac.over.Size.X.Offset, element.func.bac.over.Size.Y.Scale, element.func.bac.over.Size.Y.Offset)}):Play()
+
+			element.func.bac.num.Text = tostring(output)
+
+			callback(output)
+
 			element.func.MouseButton1Down:Connect(function()
 				local per = math.clamp((game:GetService("UserInputService"):GetMouseLocation().X - element.func.bac.AbsolutePosition.X) / element.func.bac.AbsoluteSize.X, 0, 1)
 

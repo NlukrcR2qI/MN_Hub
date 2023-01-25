@@ -200,11 +200,11 @@ playertab:Create_Button("Tp To The Artic (Middle Right Turn)", function()
 end)
 
 playertab:Create_Button("Tp To The Artic (Middle Left Turn)", function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-891.4859619140625, 430.3525085449219, 6247.12890625)
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-714.7868041992188, 399.3516540527344, 6243.7998046875)
 end)
 
 playertab:Create_Button("Tp To The Artic (End)", function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-891.4859619140625, 430.3525085449219, 6247.12890625)
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1287.756591796875, 423.9065856933594, 7832.7431640625)
 end)
 
 playertab:Create_Button("Tp To The End", function()

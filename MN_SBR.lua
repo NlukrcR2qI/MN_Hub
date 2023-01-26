@@ -44,6 +44,8 @@ sbrtab:Create_Toggle("Advanced Auto SBR", false, function(a)
 					task.wait()
 				
 					firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, game:GetService("Workspace").Finish, 0)
+
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1428.225341796875, 402.1226501464844, 7879.00341796875)
 				end
 	
 				for i,v in ipairs(game:GetService("Workspace").Barriers:GetChildren()) do
@@ -278,7 +280,7 @@ playertab:Create_Button("Tp To The End (Hiding Area)", function()
 	workspace.Map["Part 1895"].Size = Vector3.new(618, 251, 415)
     workspace.Map["Part 1898"].Size = Vector3.new(0,0.1,0)
 
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1360.38916015625, 390.1241760253906, 7912.0849609375)
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1428.225341796875, 402.1226501464844, 7879.00341796875)
 end)
 
 playertab:Create_Button("Tp To The Bridge (Start)", function()

@@ -1,8 +1,70 @@
-if not game.PlaceId == 4643697430 then return end
-
 local lib = loadstring(syn.request({Url = "https://raw.githubusercontent.com/NlukrcR2qI/MN_Hub/main/lib.lua", Method = "GET", Headers = {["Content-Type"] = "application/json"}}).Body)()
 
+if game.PlaceId == 4643697430 then else lib:Create_Noti("Script Error", "Not Connected To Sbr!!!") task.wait(9e9) end
+
 local mainui = lib:CreateUI()
+
+local sbrtab = mainui:Create_Tab("SBR")
+
+shared.sbrdata = {
+	toggle = false
+}
+
+sbrtab:Create_Toggle("Advanced Auto SBR", false, function(a)
+	if a then
+		shared.sbrdata.toggle = true
+
+		lib:Create_Noti("Script Notify", "Auto SBR Enabled")
+
+		coroutine.wrap(function()
+			repeat task.wait() until not game.Workspace:FindFirstChild("Barrier")
+
+			for i,v in ipairs(game:GetService("Workspace").Barriers:GetChildren()) do
+				if not shared.sbrdata.toggle then break end
+	
+				firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v, 1)
+	
+				task.wait()
+	
+				firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v, 0)
+	
+				break
+			end
+	
+			shared.sbrdata.childremovedconnect = game.Workspace.Barriers.ChildRemoved:Connect(function()
+				if not shared.sbrdata.toggle then return end
+	
+				if #game:GetService("Workspace").Barriers:GetChildren() == 0 then
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1839.83, 414.666, 8988.37)
+	
+					task.wait(1)
+	
+					firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, game:GetService("Workspace").Finish, 1)
+				
+					task.wait()
+				
+					firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, game:GetService("Workspace").Finish, 0)
+				end
+	
+				for i,v in ipairs(game:GetService("Workspace").Barriers:GetChildren()) do
+					firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v, 1)
+				
+					task.wait()
+				
+					firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v, 0)
+				
+					break
+				end
+			end)
+		end)()
+	else
+		lib:Create_Noti("Script Notify", "Auto SBR Disabled")
+
+		shared.sbrdata.childremovedconnect:Disconnect()
+
+		shared.sbrdata.toggle = false
+	end
+end)
 
 local num = 0
 local function breakity(part)
@@ -12,14 +74,15 @@ local function breakity(part)
     end
 end
 
-pcall(function()
-	game:GetService("Workspace").Barriers:Destroy()
-end)
-
 for i,v in pairs(workspace.Map:GetChildren()) do
     if v:IsA("Part") then
         breakity(v)
     end
+end
+
+for i,v in pairs(game:GetService("Workspace").Barriers:GetChildren()) do
+    v.Size = Vector3.new(0,0,0)
+    v.Position = Vector3.new(0,-1000,0)
 end
 
 local TPBypass
@@ -297,7 +360,7 @@ horsetab:Create_Toggle("Horse Stamina Bypass", false, function(a)
 			end
 
 			if a.KeyCode == Enum.KeyCode.Space then
-				game.Workspace[game.Players.LocalPlayer.Name.."'s Horse"].Humanoid.JumpPower = 75
+				game.Workspace[game.Players.LocalPlayer.Name.."'s Horse"].Humanoid.JumpPower = 85
 				game.Workspace[game.Players.LocalPlayer.Name.."'s Horse"].Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
 			end
 	

@@ -45,6 +45,8 @@ sbrtab:Create_Toggle("Advanced Auto SBR", false, function(a)
 				
 					firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, game:GetService("Workspace").Finish, 0)
 
+					task.wait(1)
+
 					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1428.225341796875, 402.1226501464844, 7879.00341796875)
 				end
 	

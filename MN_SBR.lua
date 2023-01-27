@@ -446,6 +446,21 @@ horsetab:Create_Toggle("Horse Stamina Bypass", false, function(a)
 	end
 end)
 
+local misctab = mainui:Create_Tab("Misc")
+
+misctab:Create_Toggle("Enable Chat Box", false, function(a)
+	if a then
+		game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatChannelParentFrame.Visible = true
+		game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatChannelParentFrame.Position = UDim2.new(game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatChannelParentFrame.Position.X.Scale, game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatChannelParentFrame.Position.X.Offset, 0.18, game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatChannelParentFrame.Position.Y.Offset)
+		game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.AnchorPoint = Vector2.new(0,1)
+		game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Position = UDim2.new(game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Position.X.Scale, game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Position.X.Offset, 1, game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Position.Y.Offset)
+	
+		game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, true)
+	else
+		game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
+	end
+end)
+
 for i,v in pairs(getconnections(game.CoreGui.MN_LIB.MN_MFRM.container.bar.holder.positioner:FindFirstChild("tab").MouseButton1Click)) do
     v.Function()
 end

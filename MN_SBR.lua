@@ -450,10 +450,13 @@ local misctab = mainui:Create_Tab("Misc")
 
 misctab:Create_Toggle("Enable Chat Box", false, function(a)
 	if a then
-		game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatChannelParentFrame.Visible = true
-		game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatChannelParentFrame.Position = UDim2.new(game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatChannelParentFrame.Position.X.Scale, game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatChannelParentFrame.Position.X.Offset, 0.18, game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatChannelParentFrame.Position.Y.Offset)
-		game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.AnchorPoint = Vector2.new(0,1)
-		game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Position = UDim2.new(game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Position.X.Scale, game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Position.X.Offset, 1, game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Position.Y.Offset)
+		pcall(function()
+			game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatChannelParentFrame.Visible = true
+			game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatChannelParentFrame.AnchorPoint = Vector2.new(0.5,0)
+			game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatChannelParentFrame.Size = UDim2.new(1, 0, 0, -250)
+			game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatChannelParentFrame.Position = UDim2.new(0.5, game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatChannelParentFrame.Position.X.Offset, 0, game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatChannelParentFrame.Position.Y.Offset)
+			game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatChannelParentFrame.Parent = game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame
+		end)
 	
 		game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, true)
 	else
